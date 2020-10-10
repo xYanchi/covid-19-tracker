@@ -9,11 +9,13 @@ import {
 import './App.css';
 import InfoBox from './InfoBox';
 import Map from './Map';
+import Table from './Table';
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState('worldwide');
   const [countryInfo, setCountryInfo] = useState({});
+  const [tableData, setTableData] = useState([]);
 
   //Initialize data to be for all countries when loading to app
   useEffect(() => {
@@ -37,6 +39,7 @@ function App() {
               name: country.country, // United Kingdom, United States, France
               value: country.countryInfo.iso2 // UK, USA, FR
             }));
+          setTableData(data);
           setCountries(countries);
         });
     };
@@ -96,13 +99,11 @@ function App() {
       <Card className="app_right">
         <CardContent>
           <h3>Live Cases by Country</h3>
-          {/* Table */}
+          <Table countries={tableData} />
           <h3>Worldwide new cases</h3>
           {/* Graph */}
         </CardContent>
       </Card>
-
-
     </div>
   );
 }
