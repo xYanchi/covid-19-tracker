@@ -7,9 +7,12 @@ import {
   CardContent,
 } from "@material-ui/core";
 import './App.css';
+import InfoBox from './InfoBox';
 
 function App() {
   const [countries, setCountries] = useState([]);
+  const [country, setCountry] = useState('worldwide');
+
   useEffect(() => {
     //The code inside will run once when the component loads
     //async, send a request, wait, do retrieve only for name, value
@@ -29,13 +32,24 @@ function App() {
     getCountriesData();
   }, []);
 
+  // 'async' useless without 'await'
+  const onCountryChange = async (event) => {
+    const countryCode = event.target.value;
+    setCountry(countryCode);
+    console.log("CountryCode: ", countryCode)
+  }
+
   return (
+
     // BEM 
     <div className="app">
+
       <div className="app_header">
         <h1>COVID-19 TRACKER</h1>
         <FormControl className="app_dropdown">
-          <Select variant="outlined" value="abc">
+          {/* default value of country is Worldwide from the state on top */}
+          <Select variant="outlined" value={country} onChange={onCountryChange}>
+            <MenuItem value="worldwide">Worldwide</MenuItem>
             {
               countries.map((country) => (
                 <MenuItem value={country.value}>{country.name}</MenuItem>
@@ -46,12 +60,12 @@ function App() {
       </div>
 
 
-      {/* Header */}
-      {/* Title */}
 
-      {/* InfoBoxs */}
-      {/* InfoBoxs */}
-      {/* InfoBoxs */}
+      <div className="app_stats">
+        <InfoBox title="Coronavirus Cases" cases={1} total={1} />
+        <InfoBox title="Recovered" cases={2} total={2} />
+        <InfoBox title="Deaths" cases={3} total={3} />
+      </div>
 
       {/* Table */}
       {/* Table */}
