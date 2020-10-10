@@ -15,6 +15,15 @@ function App() {
   const [country, setCountry] = useState('worldwide');
   const [countryInfo, setCountryInfo] = useState({});
 
+  //Initialize data to be for all countries when loading to app
+  useEffect(() => {
+    fetch("https://disease.sh/v3/covid-19/all")
+      .then(response => response.json())
+      .then(data => {
+        setCountryInfo(data);
+      })
+  })
+
   useEffect(() => {
     //The code inside will run once when the component loads
     //async, send a request, wait, do retrieve only for name, value
@@ -39,9 +48,10 @@ function App() {
     const countryCode = event.target.value;
     setCountry(countryCode);
 
-    // https://disease.sh/v3/covid-19/countries/all
-    // https://disease.sh/v3/covid-19/countries/[COUNTRY_CODE] // `` to concatenate 
-    const url = countryCode === 'worlwide' ? 'https://disease.sh/v3/covid-19/countries/all'
+
+    // https://disease.sh/v3/covid-19/all //Worldwide
+    // https://disease.sh/v3/covid-19/countries/[COUNTRY_CODE] // `` to concatenate the specific country
+    const url = countryCode === 'worlwide' ? 'https://disease.sh/v3/covid-19/all'
       : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
     await fetch(url)
       .then(response => response.json())
@@ -52,7 +62,7 @@ function App() {
         setCountryInfo(data);
       })
   }
-  console.log(countryInfo)
+  // console.log(countryInfo)
 
   return (
 
