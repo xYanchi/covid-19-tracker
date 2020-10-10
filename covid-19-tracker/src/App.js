@@ -10,6 +10,7 @@ import './App.css';
 import InfoBox from './InfoBox';
 import Map from './Map';
 import Table from './Table';
+import { sortData } from './utl';
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -23,8 +24,8 @@ function App() {
       .then(response => response.json())
       .then(data => {
         setCountryInfo(data);
-      })
-  })
+      });
+  }, []);
 
   useEffect(() => {
     //The code inside will run once when the component loads
@@ -39,7 +40,9 @@ function App() {
               name: country.country, // United Kingdom, United States, France
               value: country.countryInfo.iso2 // UK, USA, FR
             }));
-          setTableData(data);
+
+          const sortedData = sortData(data);
+          setTableData(sortedData);
           setCountries(countries);
         });
     };
