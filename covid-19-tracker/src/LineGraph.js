@@ -48,8 +48,8 @@ const options = {
     },
 };
 
-
-function LineGraph({ casesType = 'cases' }) {
+// ...props to get the app_graph from App.js
+function LineGraph({ casesType = 'cases', ...props }) {
     const [data, setData] = useState({});
 
     const buildChartData = (data, casesType = 'cases') => {
@@ -85,7 +85,7 @@ function LineGraph({ casesType = 'cases' }) {
 
 
     return (
-        <div className="linegraph">
+        <div className={props.className}>
             {/* (error handling) Optional chaining to check if there is data, else return undefined*/}
             {data?.length > 0 && (
                 <Line
