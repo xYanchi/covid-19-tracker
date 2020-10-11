@@ -31,22 +31,23 @@ const options = {
                     tooltipFormat: "ll",
                 },
             },
-        ]
-    },
-    yAxes: [
-        {
-            gridLines: {
-                display: false,
-            },
-            ticks: {
-                //Include a $ sign in the ticks
-                callback: function (value, index, values) {
-                    return numeral(value).format("0a");
+        ],
+        yAxes: [
+            {
+                gridLines: {
+                    display: false,
+                },
+                ticks: {
+                    //Include a $ sign in the ticks
+                    callback: function (value, index, values) {
+                        return numeral(value).format("0a");
+                    },
                 },
             },
-        },
-    ]
-}
+        ]
+    },
+};
+
 
 function LineGraph({ casesType = 'cases' }) {
     const [data, setData] = useState({});
@@ -74,7 +75,7 @@ function LineGraph({ casesType = 'cases' }) {
             await fetch('https://disease.sh/v3/covid-19/historical/all?lastdays=all')
                 .then(response => response.json())
                 .then(data => {
-                    let chartData = buildChartData(data, 'cases');
+                    let chartData = buildChartData(data, casesType);
                     setData(chartData);
                 });
         }
