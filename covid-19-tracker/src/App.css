@@ -52,6 +52,7 @@ body{
 .app_graphTitle{
   margin-top: 10px;
   margin-bottom: 20px;
+  text-transform: capitalize;
 }
 
 .app_stats{
