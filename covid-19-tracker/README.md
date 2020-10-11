@@ -1,3 +1,5 @@
+Here is the hosted link: https://covid-19-tracker-8a231.web.app/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
