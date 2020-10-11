@@ -85,7 +85,6 @@ function LineGraph({ casesType = 'cases' }) {
 
     return (
         <div className="linegraph">
-            <h1>IM A GRAPH</h1>
             {/* (error handling) Optional chaining to check if there is data, else return undefined*/}
             {data?.length > 0 && (
                 <Line
