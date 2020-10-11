@@ -9,6 +9,7 @@
 /* .leaflet-container is given from LeafletMap */
 .map .leaflet-container{
     height: 100%;
+    border-radius: 15px;
 }
 
 .info-flag img{

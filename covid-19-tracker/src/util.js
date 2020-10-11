@@ -9,7 +9,7 @@ export const casesTypeColors = {
         multiplier: 800,
 
         // For graph
-        backgroundColor: "rgba(204, 16, 52, 0.5)",
+        backgroundColor: "rgba(204, 16, 52, 0.4)",
     },
     recovered: {
         // For Map
@@ -17,7 +17,7 @@ export const casesTypeColors = {
         multiplier: 1200,
 
         // For graph
-        backgroundColor: "rgba(125, 215, 29, 0.5)",
+        backgroundColor: "rgba(125, 215, 29, 0.4)",
     },
     deaths: {
         // For Map
@@ -25,7 +25,7 @@ export const casesTypeColors = {
         multiplier: 2000,
 
         // For graph
-        backgroundColor: "rgba(251, 68, 67, 0.5)",
+        backgroundColor: "rgba(251, 68, 67, 0.4)",
     },
 };
 
