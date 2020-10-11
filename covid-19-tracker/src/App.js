@@ -10,7 +10,7 @@ import './App.css';
 import InfoBox from './InfoBox';
 import Map from './Map';
 import Table from './Table';
-import { sortData } from './utl';
+import { sortData } from './util';
 import LineGraph from './LineGraph';
 import "leaflet/dist/leaflet.css";
 
@@ -26,7 +26,7 @@ function App() {
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
       .then(response => response.json())
-      .then(data => {
+      .then((data) => {
         setCountryInfo(data);
       });
   }, []);
@@ -35,17 +35,15 @@ function App() {
     //The code inside will run once when the component loads
     //async, send a request, wait, do retrieve only for name, value
     const getCountriesData = async () => {
-      await fetch("https://disease.sh/v3/covid-19/countries")
+      /*await*/ fetch("https://disease.sh/v3/covid-19/countries")
         .then((response) => response.json())
         .then((data) => {
           //Now we got the whole json response
-          const countries = data.map((country) => (
-            {
-              name: country.country, // United Kingdom, United States, France
-              value: country.countryInfo.iso2 // UK, USA, FR
-            }));
-
-          const sortedData = sortData(data);
+          const countries = data.map((country) => ({
+            name: country.country, // United Kingdom, United States, France
+            value: country.countryInfo.iso2 // UK, USA, FR
+          }));
+          let sortedData = sortData(data);
           setTableData(sortedData);
           setCountries(countries);
         });
@@ -56,7 +54,7 @@ function App() {
   // 'async' useless without 'await'
   const onCountryChange = async (event) => {
     const countryCode = event.target.value;
-    setCountry(countryCode);
+    // setCountry(countryCode);
 
 
     // https://disease.sh/v3/covid-19/all //Worldwide
@@ -70,9 +68,12 @@ function App() {
 
         //All of the data from the country response
         setCountryInfo(data);
+        countryCode === "worldwide"
+          ? setMapCenter([34.80746, -40.4796])
+          : setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+        setMapZoom(4);
       })
   }
-  // console.log(countryInfo)
 
   return (
 
