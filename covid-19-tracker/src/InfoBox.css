@@ -8,9 +8,11 @@
 }
 
 .infoBox--selected{
-    border-top: 10px solid gray;
+    border-top: 10px solid greenyellow;
 }
-
+.infoBox--red{
+    border-color: red;
+}
 .infoBox_cases {
     color: #cc1034;
     font-weight: 600;
