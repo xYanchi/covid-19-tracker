@@ -63,7 +63,7 @@ function App() {
 
     // https://disease.sh/v3/covid-19/all //Worldwide
     // https://disease.sh/v3/covid-19/countries/[COUNTRY_CODE] // `` to concatenate the specific country
-    const url = countryCode === 'worlwide' ? 'https://disease.sh/v3/covid-19/120'
+    const url = countryCode === 'worlwide' ? 'https://disease.sh/v3/covid-19/all'
       : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
     await fetch(url)
       .then(response => response.json())
@@ -73,7 +73,7 @@ function App() {
         //All of the data from the country response
         setCountryInfo(data);
         countryCode === "worldwide"
-          ? setMapCenter([34.80746, -40.4796])
+          ? setMapCenter([47.040182, 6.809499])
           : setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
         setMapZoom(4);
       })

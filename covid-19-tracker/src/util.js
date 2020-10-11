@@ -2,18 +2,30 @@ import React from "react";
 import numeral from "numeral";
 import { Circle, Popup } from "react-leaflet";
 
-const casesTypeColors = {
+export const casesTypeColors = {
     cases: {
+        // For Map
         hex: "#CC1034",
         multiplier: 800,
+
+        // For graph
+        backgroundColor: "rgba(204, 16, 52, 0.5)",
     },
     recovered: {
+        // For Map
         hex: "#7dd71d",
         multiplier: 1200,
+
+        // For graph
+        backgroundColor: "rgba(125, 215, 29, 0.5)",
     },
     deaths: {
+        // For Map
         hex: "#fb4443",
         multiplier: 2000,
+
+        // For graph
+        backgroundColor: "rgba(251, 68, 67, 0.5)",
     },
 };
 
@@ -48,5 +60,4 @@ export const showDataOnMap = (data, casesType = "cases") =>
                 </div>
             </Popup>
         </Circle>
-
     ));

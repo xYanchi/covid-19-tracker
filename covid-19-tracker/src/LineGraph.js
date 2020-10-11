@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Line } from "react-chartjs-2";
 import numeral from "numeral";
+import { casesTypeColors } from "./util";
 
 
 const options = {
@@ -60,7 +61,7 @@ function LineGraph({ casesType = 'cases', ...props }) {
             if (lastDataPoint) {
                 const newDataPoint = {
                     x: date,
-                    y: data[casesType][date] - lastDataPoint // (- lastDataPoint) to get the new cases 
+                    y: data[casesType][date] - lastDataPoint // (data.. - lastDataPoint) to get the new cases 
                 }
                 chartData.push(newDataPoint);
             }
@@ -72,7 +73,7 @@ function LineGraph({ casesType = 'cases', ...props }) {
 
     useEffect(() => {
         const fetchData = async () => {
-            await fetch('https://disease.sh/v3/covid-19/historical/all?lastdays=120')
+            await fetch('https://disease.sh/v3/covid-19/historical/all?lastdays=all')
                 .then(response => response.json())
                 .then(data => {
                     let chartData = buildChartData(data, casesType);
@@ -92,8 +93,8 @@ function LineGraph({ casesType = 'cases', ...props }) {
                     options={options}
                     data={{
                         datasets: [{
-                            backgroundColor: "rgba(204, 16, 52, 0.5",
-                            borderColor: "#CC1034",
+                            backgroundColor: casesTypeColors[casesType].backgroundColor,
+                            borderColor: casesTypeColors[casesType].hex,
                             data: data,
                         }]
                     }}
