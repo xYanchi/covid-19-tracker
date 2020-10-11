@@ -2,10 +2,11 @@ import React from 'react'
 import './Map.css'
 import { Map as LeafletMap, TileLayer } from "react-leaflet";
 
-function Map() {
+function Map({ center, zoom }) {
     return (
         <div className="map">
-            <LeafletMap>
+            {/* Need to have a center (where does it start), zoom level */}
+            <LeafletMap center={center} zoom={zoom}>
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
