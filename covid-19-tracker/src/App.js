@@ -103,8 +103,6 @@ function App() {
           </FormControl>
         </div>
 
-
-
         <div className="app_stats">
           <InfoBox
             isRed
