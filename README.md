@@ -1,3 +1,9 @@
+This React application uses the API: diseases.sh. They have public data that can be retrieved for knowing the number of cases, deaths according to each country (in this case).
+The map uses Leaflet to create the map. 
+The chart uses Chart.js for showing stats in charts.
+
+The user is able to see the number of cases, recovered and deaths of each country in real-time. This is effective to analyze whether the coronavirus spread is still strong with a circles on the map (size depends on numbers)
+
 Here is the hosted link: https://covid-19-tracker-8a231.web.app/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
